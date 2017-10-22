@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Random;
+
+
 public class Sorting 
 {
     void insertionSort(int array[])
@@ -75,16 +79,52 @@ public class Sorting
 
     public static void main(String args[])
     {
-        int arr[] = {12, 11, 13, 5, 6, 7};
-        int arry[] = {12, 11, 13, 5, 6, 8};
+        //User input of different sizes can be entered 4 different ways.
+        //1: sorted in descending order
+        //2: all data is the same
+        //3: sorted in ascending order
+        //4: Random order
+        // must run all sorting methods and compare/display run times
+        System.out.println("Enter the size of your array or type random for random size: ");
+        Scanner sc = new Scanner(System.in);
+        String type = sc.nextLine();
+        
+        try{
+            int n = Integer.parseInt(type);
+            int array[] = new int[n];
+            System.out.println("Enter in all the data you'd like to sort");
+            array[0] = sc.nextInt();
+            for(int i = 1; i<array.length; i++){
+                int temp = sc.nextInt();
+                array[i] = temp;
+            }
+        } catch (NumberFormatException e)
+        {
+            if ("random".equals(type)){
+                int array[] = new int[math.random*15];
+                System.out.println("Randomly generating data...");
+                array[0] = math.random*50;
+                for(int i = 1; i<array.length; i++){
+                    array[i] = math.random*50;
+                }
+            }
+        }
+        
+
+
+        //int arr[] = {12, 11, 13, 5, 6, 7};
+        //int arry[] = {12, 11, 13, 5, 6, 8};
         //int n = arr.length;
 
+        /*
         Sorting obj = new Sorting();
         obj.heapSort(arr);
         obj.insertionSort(arry);
         System.out.println("Here are your sorted arrays: ");
         printArray(arr);
         printArray(arry);
+        */
+        
     }
 
 }
