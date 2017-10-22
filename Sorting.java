@@ -78,10 +78,16 @@ public class Sorting
         int arr[] = {12, 11, 13, 5, 6, 7};
         int arry[] = {12, 11, 13, 5, 6, 8};
         //int n = arr.length;
-
+        long startTime=System.currentTimeMillis();
         Sorting obj = new Sorting();
         obj.heapSort(arr);
+        long endTime   = System.currentTimeMillis();
+	    long totalTime = endTime - startTime;
+	    System.out.println("Run Time: " +totalTime);
+        startTime=System.currentTimeMillis();
         obj.insertionSort(arry);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
         System.out.println("Here are your sorted arrays: ");
         printArray(arr);
         printArray(arry);
