@@ -77,7 +77,7 @@ public class Sorting
     {
         int arr[] = {12, 11, 13, 5, 6, 7};
         int arry[] = {12, 11, 13, 5, 6, 8};
-        int n = arr.length;
+        //int n = arr.length;
 
         Sorting obj = new Sorting();
         obj.heapSort(arr);
