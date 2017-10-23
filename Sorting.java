@@ -209,7 +209,7 @@ public class Sorting
  
 		// recursively sort two sub parts
         if (low < j)
-            if (j <= cutoff){
+            if (high <= cutoff){
                 insertionSort(arr);
             }
 			else{
@@ -374,7 +374,7 @@ public class Sorting
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Merge Sort\n");
-        obj.sort(arr,0,arr.length);
+        obj.sort(arr,0,arr.length-1);
         endTime=System.currentTimeMillis();
         totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
@@ -382,7 +382,7 @@ public class Sorting
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #2\n");
-        obj.quickSortRight(arr,0,arr.length);
+        obj.quickSortRight(arr,0,arr.length-1);
         endTime=System.currentTimeMillis();
         totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
@@ -390,7 +390,7 @@ public class Sorting
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #3\n");
-        obj.quickInsert(arr,0,arr.length);
+        obj.quickInsert(arr,0,arr.length-1);
         endTime=System.currentTimeMillis();
         totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
@@ -398,7 +398,7 @@ public class Sorting
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #4\n");
-        obj.quickSort2(arr,10,arr.length);
+        obj.quickSort2(arr,10,arr.length-1);
         endTime=System.currentTimeMillis();
         totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
