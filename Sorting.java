@@ -22,6 +22,95 @@ public class Sorting
         }
     }
 
+    void quickInsert(int[] arr, int low, int high){
+        final int cutoff = 10;
+
+		if (arr == null || arr.length == 0)
+			return;
+
+		while(low < high){
+
+        }
+
+	    // pick the pivot
+	
+        int pivot = arr[high];
+
+        // make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+        if (low < j)
+            if (j <= cutoff){
+                insertionSort(arr);
+            }
+			else{
+                quickSort(arr, i, low);
+            }
+ 
+		if (high > i)
+			quickSort(arr, i, high);
+        
+
+	}
+
+    void quickSort(int[] arr, int low, int high) {
+		if (arr == null || arr.length == 0)
+			return;
+ 
+		if (low >= high)
+			return;
+ 
+		// pick the pivot
+		
+		int pivot = arr[high];
+ 
+		// make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+		if (low < j)
+			quickSort(arr, low, j);
+ 
+		if (high > i)
+			quickSort(arr, i, high);
+     
+	}
+
     static void printArray(int arr[])
     {
         int n = arr.length;
