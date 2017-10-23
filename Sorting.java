@@ -330,24 +330,75 @@ public class Sorting
         
         try{
             int n = Integer.parseInt(type);
-            int array[] = new int[n];
+            int arr[] = new int[n];
+		int arr2[]=new int[n];
             System.out.println("Enter in all the data you'd like to sort");
             array[0] = sc.nextInt();
-            for(int i = 1; i<array.length; i++){
+            for(int i = 1; i<arr.length; i++){
                 int temp = sc.nextInt();
-                array[i] = temp;
+                arr[i] = temp;
             }
+		
         } catch (NumberFormatException e)
         {
             if ("random".equals(type)){
-                int array[] = new int[math.random*15];
+                int arr[] = new int[math.random*15];
                 System.out.println("Randomly generating data...");
-                array[0] = math.random*50;
-                for(int i = 1; i<array.length; i++){
-                    array[i] = math.random*50;
+                arr[0] = math.random*50;
+                for(int i = 1; i<arr.length; i++){
+                    arr[i] = math.random*50;
                 }
             }
+		arr2=arr;
         }
+        long startTime=System.currentTimeMillis();
+        Sorting obj = new Sorting();
+	System.out.println("Heap Sort\n");
+        obj.heapSort(arr);
+        long endTime   = System.currentTimeMillis();
+	    long totalTime = endTime - startTime;
+	    System.out.println("Run Time: " +totalTime+"\n");
+	    printArray(arr);
+	    arr=arr2;
+        startTime=System.currentTimeMillis();
+	    System.out.println("Insertion Sort\n");
+        obj.insertionSort(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Merge Sort\n");
+        obj.sort(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #2\n");
+        obj.quickSortRight(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #3\n");
+        obj.quickInsert(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+        printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #4\n");
+        obj.quickSort2(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+        printArray(arr);
         
 
 
