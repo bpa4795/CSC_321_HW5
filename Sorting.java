@@ -179,9 +179,7 @@ public class Sorting
 		if (arr == null || arr.length == 0)
 			return;
 
-		while(low < high){
-
-        }
+	
 
 	    // pick the pivot
 	
@@ -264,6 +262,7 @@ public class Sorting
 
     static void printArray(int arr[])
     {
+	System.out.println("Here is your sorted array");
         int n = arr.length;
         for (int i =0; i<n; ++i)
             System.out.print(arr[i] + " ");
@@ -360,21 +359,47 @@ public class Sorting
          public static void main(String args[])
     {
         int arr[] = {12, 11, 13, 5, 6, 7};
-        int arry[] = {12, 11, 13, 5, 6, 8};
+        int arry[] = {12, 11, 13, 5, 6, 7};
         //int n = arr.length;
         long startTime=System.currentTimeMillis();
         Sorting obj = new Sorting();
+	System.out.println("Heap Sort\n");
         obj.heapSort(arr);
         long endTime   = System.currentTimeMillis();
 	    long totalTime = endTime - startTime;
-	    System.out.println("Run Time: " +totalTime);
+	    System.out.println("Run Time: " +totalTime+"\n");
+	    printArray(arr);
         startTime=System.currentTimeMillis();
-        obj.insertionSort(arry);
+        obj.insertionSort(arr);
         endTime=System.currentTimeMillis();
         totalTime=endTime-startTime
-        System.out.println("Here are your sorted arrays: ");
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	 startTime=System.currentTimeMillis();
+        obj.sort(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	 startTime=System.currentTimeMillis();
+        obj.quickSortRight(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	 startTime=System.currentTimeMillis();
+        obj.quickSort2(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
         printArray(arr);
-        printArray(arry);
+	 startTime=System.currentTimeMillis();
+        obj.quickInsert(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+        printArray(arr);
+        
     }
         */
         
