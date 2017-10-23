@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Random;
+import java.math.*;
 
 
 public class Sorting 
@@ -76,7 +78,7 @@ public class Sorting
 	            merge(arr, l, m, r);
 	        }
 	    }
-		public static void quickSortRight(int[] arr, int low, int high) {
+		public void quickSortRight(int[] arr, int low, int high) {
 		if (arr == null || arr.length == 0)
 			return;
  
@@ -115,7 +117,7 @@ public class Sorting
 			quickSortRight(arr, i, high);
      
 	}
-	public static void quickSort2(int[] arr, int low, int high) {
+	public void quickSort2(int[] arr, int low, int high) {
 		if (arr == null || arr.length == 0)
 			return;
  
@@ -123,7 +125,7 @@ public class Sorting
 			return;
  
 		// pick the pivot
-		int middle = 10+(high-10)/2
+		int middle = 10+(high-10)/2;
 		int pivot = arr[middle];
  
 		// make left < pivot and right > pivot
@@ -327,13 +329,14 @@ public class Sorting
         System.out.println("Enter the size of your array or type random for random size: ");
         Scanner sc = new Scanner(System.in);
         String type = sc.nextLine();
-        
+        int arr[]={-1};
+        int arr2[];
         try{
             int n = Integer.parseInt(type);
-            int arr[] = new int[n];
-		int arr2[]=new int[n];
+            arr = new int[n];
+            arr2=new int[n];
             System.out.println("Enter in all the data you'd like to sort");
-            array[0] = sc.nextInt();
+            arr[0] = sc.nextInt();
             for(int i = 1; i<arr.length; i++){
                 int temp = sc.nextInt();
                 arr[i] = temp;
@@ -342,11 +345,12 @@ public class Sorting
         } catch (NumberFormatException e)
         {
             if ("random".equals(type)){
-                int arr[] = new int[math.random*15];
+                arr = new int[(int) (Math.random()*15)];
+                arr2=new int[arr.length-1];
                 System.out.println("Randomly generating data...");
-                arr[0] = math.random*50;
+                arr[0] = (int) (Math.random()*50);
                 for(int i = 1; i<arr.length; i++){
-                    arr[i] = math.random*50;
+                    arr[i] = (int) (Math.random()*50);
                 }
             }
 		arr2=arr;
@@ -364,39 +368,39 @@ public class Sorting
 	    System.out.println("Insertion Sort\n");
         obj.insertionSort(arr);
         endTime=System.currentTimeMillis();
-        totalTime=endTime-startTime
+        totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
 	 printArray(arr);
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Merge Sort\n");
-        obj.sort(arr);
+        obj.sort(arr,0,arr.length);
         endTime=System.currentTimeMillis();
-        totalTime=endTime-startTime
+        totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
 	 printArray(arr);
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #2\n");
-        obj.quickSortRight(arr);
+        obj.quickSortRight(arr,0,arr.length);
         endTime=System.currentTimeMillis();
-        totalTime=endTime-startTime
+        totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
 	 printArray(arr);
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #3\n");
-        obj.quickInsert(arr);
+        obj.quickInsert(arr,0,arr.length);
         endTime=System.currentTimeMillis();
-        totalTime=endTime-startTime
+        totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
         printArray(arr);
 	    arr=arr2;
 	 startTime=System.currentTimeMillis();
 	    System.out.println("Quick Sort #4\n");
-        obj.quickSort2(arr);
+        obj.quickSort2(arr,10,arr.length);
         endTime=System.currentTimeMillis();
-        totalTime=endTime-startTime
+        totalTime=endTime-startTime;
 	 System.out.println("Run Time: " +totalTime+"\n");
         printArray(arr);
         
