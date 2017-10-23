@@ -1,5 +1,160 @@
+import java.util.Arrays;
+import java.util.Random;
+
+
 public class Sorting 
 {
+	 void merge(int arr[], int l, int m, int r)
+	    {
+	        // Find sizes of two subarrays to be merged
+	        int n1 = m - l + 1;
+	        int n2 = r - m;
+	 
+	        // Create temp arrays 
+	        int L[] = new int [n1];
+	        int R[] = new int [n2];
+	 
+	        // Copies data into temp array
+	        for (int i=0; i<n1; ++i)
+	            L[i] = arr[l + i];
+	        for (int j=0; j<n2; ++j)
+	            R[j] = arr[m + 1+ j];
+	 
+	 
+	        // Merges the temp arrays
+	 
+	        
+	        int i = 0, j = 0;
+	 
+	        
+	        int k = l;
+	        while (i < n1 && j < n2)
+	        {
+	            if (L[i] <= R[j])
+	            {
+	                arr[k] = L[i];
+	                i++;
+	            }
+	            else
+	            {
+	                arr[k] = R[j];
+	                j++;
+	            }
+	            k++;
+	        }
+	 
+	        // Copies remaining elements if there are any
+	        while (i < n1)
+	        {
+	            arr[k] = L[i];
+	            i++;
+	            k++;
+	        }
+	 
+	        
+	        while (j < n2)
+	        {
+	            arr[k] = R[j];
+	            j++;
+	            k++;
+	        }
+	    }
+	 
+	  
+	    void sort(int arr[], int l, int r)
+	    {
+	        if (l < r)
+	        {
+	            // Find the middle point
+	            int m = (l+r)/2;
+	 
+	            // Sort first and second halves
+	            sort(arr, l, m);
+	            sort(arr , m+1, r);
+	 
+	            // Merge the sorted halves
+	            merge(arr, l, m, r);
+	        }
+	    }
+		public static void quickSortRight(int[] arr, int low, int high) {
+		if (arr == null || arr.length == 0)
+			return;
+ 
+		if (low >= high)
+			return;
+ 
+		// pick the pivot
+		
+		int pivot = arr[high];
+ 
+		// make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+		if (low < j)
+			quickSortRight(arr, low, j);
+ 
+		if (high > i)
+			quickSortRight(arr, i, high);
+     
+	}
+	public static void quickSort2(int[] arr, int low, int high) {
+		if (arr == null || arr.length == 0)
+			return;
+ 
+		if (low >= high)
+			return;
+ 
+		// pick the pivot
+		int middle = 10+(high-10)/2
+		int pivot = arr[middle];
+ 
+		// make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+		if (low < j)
+			quickSort2(arr, low, j);
+ 
+		if (high > i)
+			quickSort2(arr, i, high);
+     
+	}
+	
     void insertionSort(int array[])
     {
         int n = array.length;
@@ -18,8 +173,96 @@ public class Sorting
         }
     }
 
+    void quickInsert(int[] arr, int low, int high){
+        final int cutoff = 10;
+
+		if (arr == null || arr.length == 0)
+			return;
+
+	
+
+	    // pick the pivot
+	
+        int pivot = arr[high];
+
+        // make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+        if (low < j)
+            if (j <= cutoff){
+                insertionSort(arr);
+            }
+			else{
+                quickSort(arr, i, low);
+            }
+ 
+		if (high > i)
+			quickSort(arr, i, high);
+        
+
+	}
+
+    void quickSort(int[] arr, int low, int high) {
+		if (arr == null || arr.length == 0)
+			return;
+ 
+		if (low >= high)
+			return;
+ 
+		// pick the pivot
+		
+		int pivot = arr[high];
+ 
+		// make left < pivot and right > pivot
+		int i = low, j = high;
+		while (i <= j) {
+			while (arr[i] < pivot) {
+				i++;
+			}
+ 
+			while (arr[j] > pivot) {
+				j--;
+			}
+ 
+			if (i <= j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+				i++;
+				j--;
+			}
+		}
+ 
+		// recursively sort two sub parts
+		if (low < j)
+			quickSort(arr, low, j);
+ 
+		if (high > i)
+			quickSort(arr, i, high);
+     
+	}
+
     static void printArray(int arr[])
     {
+	System.out.println("Here is your sorted array");
         int n = arr.length;
         for (int i =0; i<n; ++i)
             System.out.print(arr[i] + " ");
@@ -75,16 +318,91 @@ public class Sorting
 
     public static void main(String args[])
     {
-        int arr[] = {12, 11, 13, 5, 6, 7};
-        int arry[] = {12, 11, 13, 5, 6, 8};
-        //int n = arr.length;
-
+        //User input of different sizes can be entered 4 different ways.
+        //1: sorted in descending order
+        //2: all data is the same
+        //3: sorted in ascending order
+        //4: Random order
+        // must run all sorting methods and compare/display run times
+        System.out.println("Enter the size of your array or type random for random size: ");
+        Scanner sc = new Scanner(System.in);
+        String type = sc.nextLine();
+        
+        try{
+            int n = Integer.parseInt(type);
+            int arr[] = new int[n];
+		int arr2[]=new int[n];
+            System.out.println("Enter in all the data you'd like to sort");
+            array[0] = sc.nextInt();
+            for(int i = 1; i<arr.length; i++){
+                int temp = sc.nextInt();
+                arr[i] = temp;
+            }
+		
+        } catch (NumberFormatException e)
+        {
+            if ("random".equals(type)){
+                int arr[] = new int[math.random*15];
+                System.out.println("Randomly generating data...");
+                arr[0] = math.random*50;
+                for(int i = 1; i<arr.length; i++){
+                    arr[i] = math.random*50;
+                }
+            }
+		arr2=arr;
+        }
+        long startTime=System.currentTimeMillis();
         Sorting obj = new Sorting();
+	System.out.println("Heap Sort\n");
         obj.heapSort(arr);
-        obj.insertionSort(arry);
-        System.out.println("Here are your sorted arrays: ");
+        long endTime   = System.currentTimeMillis();
+	    long totalTime = endTime - startTime;
+	    System.out.println("Run Time: " +totalTime+"\n");
+	    printArray(arr);
+	    arr=arr2;
+        startTime=System.currentTimeMillis();
+	    System.out.println("Insertion Sort\n");
+        obj.insertionSort(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Merge Sort\n");
+        obj.sort(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #2\n");
+        obj.quickSortRight(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+	 printArray(arr);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #3\n");
+        obj.quickInsert(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
         printArray(arr);
-        printArray(arry);
+	    arr=arr2;
+	 startTime=System.currentTimeMillis();
+	    System.out.println("Quick Sort #4\n");
+        obj.quickSort2(arr);
+        endTime=System.currentTimeMillis();
+        totalTime=endTime-startTime
+	 System.out.println("Run Time: " +totalTime+"\n");
+        printArray(arr);
+        
+
+
+        
     }
 
 }
